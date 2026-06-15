@@ -1,0 +1,1218 @@
+/* ============================================
+   GUCC CYBER SECURITY SOCIETY - HACKER THEME
+   Version: 6.0.0 (Professional, Fully Responsive)
+   Last Updated: 2026-06-14
+   
+   Includes:
+   - Grid background & CRT scanline
+   - Navbar fixed + hide/show on scroll
+   - Button slide effect on hover
+   - Committee cards with full-width grid
+   - Mobile responsive breakpoints
+   - Scroll reveal animations
+   ============================================ */
+
+/* --------------------------------------------
+   RESET & BASE
+-------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Share Tech Mono', monospace;
+    background: #0b0b0f;
+    color: #d0f0ff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    cursor: default;
+}
+
+/* Animated Cyber Grid Background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(90deg, 
+            rgba(0, 255, 200, 0.08) 0px, 
+            rgba(0, 255, 200, 0.08) 2px,
+            transparent 2px,
+            transparent 6px),
+        repeating-linear-gradient(0deg, 
+            rgba(0, 255, 200, 0.08) 0px, 
+            rgba(0, 255, 200, 0.08) 2px,
+            transparent 2px,
+            transparent 6px);
+    background-size: 40px 40px;
+    animation: gridShift 20s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes gridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+/* CRT Scanline */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3) 0px,
+        rgba(0, 0, 0, 0.3) 2px,
+        transparent 2px,
+        transparent 6px
+    );
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --------------------------------------------
+   VARIABLES
+-------------------------------------------- */
+:root {
+    --primary: #00ffcc;
+    --primary-dark: #00ccaa;
+    --primary-glow: 0 0 8px #00ffcc, 0 0 15px #00ffcc88;
+    --secondary: #ff00cc;
+    --secondary-glow: 0 0 8px #ff00cc;
+    --accent: #ffaa00;
+    --dark: #0a0a0f;
+    --card-bg: rgba(15, 15, 25, 0.85);
+    --card-border: rgba(0, 255, 204, 0.3);
+    --gray: #8a8aa8;
+    --terminal-green: #33ff66;
+}
+
+/* --------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------- */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    position: relative;
+    display: inline-block;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    border-left: 5px solid var(--primary);
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    display: inline-block;
+    border-left: none;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 10px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 50px 0;
+    }
+}
+
+/* --------------------------------------------
+   BUTTONS - Slide Right on Hover
+-------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border: 1.5px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transition: 0.3s ease-out;
+    z-index: -1;
+}
+
+.btn:hover {
+    color: #000;
+    border-color: var(--primary);
+    box-shadow: var(--primary-glow);
+    transform: translateX(6px);
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateX(6px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--primary);
+}
+
+.btn-register {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #000;
+    border: none;
+}
+
+/* Terminal blink cursor */
+.btn::after {
+    content: "█";
+    margin-left: 8px;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --------------------------------------------
+   NAVBAR - Fixed + Hide/Show on Scroll
+-------------------------------------------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 255, 204, 0.5);
+    z-index: 1000;
+    padding: 0.8rem 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(0);
+}
+
+.navbar.hide {
+    transform: translateY(-100%);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* এটাই সমস্যা তৈরি করছিল */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 40px;
+    filter: drop-shadow(0 0 4px var(--primary));
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    color: #ccc;
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.2s;
+    position: relative;
+    padding: 5px 0;
+    white-space: nowrap;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: 0.2s;
+    box-shadow: var(--primary-glow);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary);
+    text-shadow: 0 0 4px var(--primary);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .nav-menu {
+        gap: 0.8rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-wrap: nowrap; /* জোর করে এক লাইনে রাখে */
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    .logo {
+        flex-shrink: 1; /* লোগো ছোট হতে পারে */
+        min-width: 0; /* ওভারফ্লো ঠেকায় */
+    }
+    .logo-text {
+        font-size: 0.9rem; /* একটু ছোট করে জায়গা বাঁচায় */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .nav-toggle {
+        display: block;
+        flex-shrink: 0; /* বাটন কখনো সঙ্কুচিত হবে না */
+        margin-left: auto; /* ডান দিকে ঠেলে দেয় */
+    }
+    .nav-menu {
+        /* আগের মতোই থাকবে */
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: #000000dd;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        gap: 2rem;
+        z-index: 999;
+    }
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+/* --------------------------------------------
+   HERO SECTION
+-------------------------------------------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at 30% 20%, rgba(0, 255, 204, 0.1), transparent 70%);
+   padding-top: 90px;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero .terminal-prompt {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    background: #000000aa;
+    display: inline-block;
+    padding: 8px 20px;
+    border-left: 4px solid var(--primary);
+    margin-bottom: 2rem;
+    border-radius: 0 12px 12px 0;
+}
+
+.hero .terminal-prompt span {
+    color: var(--terminal-green);
+}
+
+#typed-text {
+    font-size: 1.6rem;
+    color: var(--primary);
+    min-height: 4rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--primary);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 1.5rem auto;
+    color: var(--gray);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.hero-scroll i {
+    display: block;
+    margin-top: 5px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+/* --------------------------------------------
+   PAGE HEADER
+-------------------------------------------- */
+.page-header {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 255, 204, 0.08), transparent 70%);
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+    position: relative;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.page-subtitle {
+    color: var(--gray);
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 20px auto 0;
+}
+
+.header-decor {
+    position: absolute;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+.header-decor.left {
+    left: 20px;
+    top: 100px;
+}
+
+.header-decor.right {
+    right: 20px;
+    bottom: 40px;
+}
+
+.title-underline {
+    width: 100px;
+    height: 3px;
+    background: var(--primary);
+    margin: 20px auto;
+    border-radius: 2px;
+    box-shadow: var(--primary-glow);
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+    .header-decor {
+        display: none;
+    }
+}
+
+/* --------------------------------------------
+   FEATURES, ACTIVITIES, BLOGS, EVENTS CARDS
+-------------------------------------------- */
+.features-grid, .stats-grid, .activities-grid, .events-grid, .blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card, .activity-card, .event-card, .blog-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.feature-card:hover, .activity-card:hover, .event-card:hover, .blog-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+.feature-icon, .activity-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+}
+
+/* Countdown */
+.ctf-promo-card {
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.1), rgba(255, 0, 204, 0.05));
+    border: 1px solid var(--primary);
+    border-radius: 30px;
+    padding: 40px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.ctf-badge {
+    background: var(--primary);
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 90px;
+}
+
+.countdown-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary);
+    display: block;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Stats */
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary);
+    font-family: 'Share Tech Mono', monospace;
+    display: block;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--gray);
+}
+/* --------------------------------------------
+   FIX IMAGES IN BLOGS & ABOUT PAGE
+-------------------------------------------- */
+
+/* ব্লগ কার্ডের ছবি ঠিক করা */
+.blog-card {
+    overflow: hidden; /* ছবি যদি বের হয় তাহলে কাটবে */
+}
+.blog-image {
+    width: 100%;
+    height: 200px; /* ফিক্সড উচ্চতা, প্রয়োজনে পরিবর্তন করুন */
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    margin: -1.8rem -1.8rem 1rem -1.8rem; /* কার্ডের প্যাডিং ক্যান্সেল করে ইমেজ পুরো প্রস্থে আনে */
+    width: calc(100% + 3.6rem);
+}
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ছবি ক্রপ করে ফিট হবে */
+    display: block;
+    transition: transform 0.3s ease;
+}
+.blog-card:hover .blog-image img {
+    transform: scale(1.05); /* হোভার জুম ইফেক্ট */
+}
+
+/* অ্যাবাউট পেজের ছবি ঠিক করা */
+.about-image {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+}
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.about-image:hover img {
+    transform: scale(1.02);
+}
+
+/* রেস্পন্সিভ: মোবাইলে ব্লগ ইমেজের উচ্চতা কম */
+@media (max-width: 768px) {
+    .blog-image {
+        height: 160px;
+    }
+}
+
+/* কোনো জায়গায় সরাসরি <img> ট্যাগ থাকলে (যেমন কমিটির ছবি) */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --------------------------------------------
+   COMMITTEE PAGE - FULL WIDTH GRID
+-------------------------------------------- */
+.committee {
+    width: 100%;
+}
+.committee .container {
+    max-width: 100%;
+    padding: 0 24px;
+}
+.committee-group {
+    margin-bottom: 4rem;
+}
+.group-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary);
+    padding-left: 15px;
+}
+.committee-grid {
+    display: grid;
+    gap: 1.8rem;
+    /* grid-template-columns আর এখানে দেওয়া যাবে না – এখন JS সেট করবে */
+}
+
+.member-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+    z-index: -1;
+    opacity: 0;
+    transition: 0.4s;
+    border-radius: 22px;
+}
+
+.member-card:hover::before {
+    opacity: 0.6;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+.member-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    background: rgba(0, 255, 204, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary);
+}
+
+.member-image i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.member-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 2px solid var(--primary);
+}
+
+.member-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: #fff;
+}
+
+.member-role {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--primary);
+    background: rgba(0,255,204,0.15);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 0.5rem auto;
+}
+
+.member-contact-details {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 255, 204, 0.25);
+    font-size: 0.7rem;
+    font-family: 'Share Tech Mono', monospace;
+    color: #a0a0b0;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.member-contact-details p {
+    margin: 5px 0;
+    word-break: break-all;
+}
+
+.member-contact-details i {
+    color: var(--primary);
+    width: 22px;
+    margin-right: 8px;
+}
+
+/* --------------------------------------------
+   CONTACT PAGE
+-------------------------------------------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Inter', monospace;
+    transition: 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(0,255,204,0.4);
+}
+
+.form-success {
+    display: none;
+    margin-top: 1rem;
+    padding: 12px;
+    background: rgba(0,255,204,0.1);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    color: var(--primary);
+    text-align: center;
+}
+
+.form-success.show {
+    display: block;
+}
+
+.form-note {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--gray);
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FAQ */
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.faq-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    text-align: center;
+}
+
+.faq-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Map Section */
+.map-section {
+    padding: 0 0 60px;
+}
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--primary);
+}
+.map-address {
+    background: var(--card-bg);
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+}
+.map-address a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+.map-address a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------
+   FOOTER
+-------------------------------------------- */
+.footer {
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 2px solid var(--primary);
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-brand p {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin: 1rem 0;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.footer-logo i {
+    color: var(--primary);
+    margin-right: 8px;
+}
+.footer-links h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+.footer-links ul {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+.footer-links a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.footer-links a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+.social-links a {
+    color: var(--gray);
+    font-size: 1.3rem;
+    transition: 0.2s;
+}
+.social-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,255,204,0.2);
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+/* --------------------------------------------
+   SCROLL REVEAL
+-------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------
+   LOADING SPINNER
+-------------------------------------------- */
+.loading-spinner {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
+}
+.loading-spinner i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* --------------------------------------------
+   RESPONSIVE EXTRAS
+-------------------------------------------- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .countdown-wrapper {
+        gap: 1rem;
+    }
+    .countdown-item {
+        padding: 0.5rem 1rem;
+        min-width: 70px;
+    }
+    .countdown-number {
+        font-size: 1.8rem;
+    }
+    .committee-grid {
+        grid-template-columns: 1fr;
+    }
+    .member-contact-details p {
+        font-size: 0.65rem;
+    }
+}
+@media (max-width: 768px) {
+    .committee-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+        /* JS-এর স্টাইলকে ওভাররাইড করে মোবাইলে সাজানো দেখাবে */
+    }
+}
+/* Utility classes */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* --------------------------------------------
+   EVENT BANNER - PROFESSIONAL & ATTRACTIVE
+-------------------------------------------- */
+.event-banner {
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.08), rgba(255, 0, 204, 0.05));
+    border-top: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.event-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
+    animation: bannerShine 3s infinite;
+    pointer-events: none;
+}
+@keyframes bannerShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+.banner-status {
+    background: rgba(0, 255, 204, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulseDot 1.5s infinite;
+}
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+.banner-event-info h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin: 0.5rem 0;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.banner-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--gray);
+}
+.banner-meta i {
+    color: var(--primary);
+    margin-right: 5px;
+}
+.banner-action .btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    font-weight: bold;
+}
+.banner-action .btn:hover {
+    transform: translateX(6px);
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    .banner-meta {
+        justify-content: center;
+    }
+}

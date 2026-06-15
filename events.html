@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Past and upcoming events of GUCC Cyber Security Society – workshops, CTF competitions, webinars, and bootcamps.">
+    <meta name="keywords" content="cybersecurity events, CTF, workshops, webinars, GUCC, Green University">
+    <meta name="author" content="GUCC Cyber Security Society">
+    <meta name="theme-color" content="#0b0b0f">
+    <title>GUCC Cyber Security | Events</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="events">
+
+    <!-- ========== SHARED NAVBAR ========== -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- ========== PAGE HEADER ========== -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="header-decor left">
+                    <span class="bracket">&lt;</span><span class="tag">events</span><span class="bracket">&gt;</span>
+                </div>
+                <h1 id="page-title" class="glitch" data-text="Our Events">
+                    <span class="glitch-layer" aria-hidden="true">Our Events</span>
+                    <span class="glitch-layer" aria-hidden="true">Our Events</span>
+                    <span class="glitch-layer" aria-hidden="true">Our Events</span>
+                    Our Events
+                </h1>
+                <div class="title-underline"></div>
+                <p id="page-subtitle" class="page-subtitle">Past and upcoming cybersecurity events, workshops, and competitions</p>
+                <div class="header-decor right">
+                    <span class="bracket">&lt;/</span><span class="tag">events</span><span class="bracket">&gt;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACTIVE EVENT BANNER (DYNAMIC) ========== -->
+    <div id="eventBannerContainer"></div>
+
+    <!-- ========== EVENTS GRID SECTION ========== -->
+    <section class="events section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>// EVENT_LOG</h2>
+                <p>All events – past, present, and upcoming</p>
+            </div>
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events will be injected here by script.js -->
+                <div class="loading-spinner"><i class="fas fa-spinner fa-pulse"></i> Loading events...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CALL TO ACTION SECTION ========== -->
+    <section class="cta-padding section-padding">
+        <div class="container">
+            <div class="ctf-promo-card" style="padding: 40px 20px;">
+                <h2>Want to host an event?</h2>
+                <p>Collaborate with us to organize workshops, seminars, or CTF competitions.</p>
+                <a href="contact.html" class="btn btn-primary" style="margin-top: 20px;">Contact Us <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SHARED FOOTER ========== -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

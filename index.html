@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="GUCC Cyber Security Society – Home of cyber defenders. Join CTFs, workshops, and a community of ethical hackers at Green University.">
+    <meta name="keywords" content="GUCC, cyber security, ethical hacking, CTF, Green University, hacker community">
+    <meta name="author" content="GUCC Cyber Security Society">
+    <meta name="theme-color" content="#0b0b0f">
+    <title>GUCC Cyber Security | Home</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="index">
+
+    <!-- ========== SHARED COMPONENTS ========== -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="terminal-prompt">
+                <span>$></span> gucc@cyber:~ 
+            </div>
+            <h1 class="glitch" data-text="GUCC Cyber Security Society">
+                GUCC Cyber Security Society
+            </h1>
+            <div id="typed-text"></div>
+            <p class="hero-description">
+                Join the elite community of ethical hackers, CTF warriors, and cyber defenders at Green University.
+            </p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">Initiate Access <i class="fas fa-arrow-right"></i></a>
+                <a href="events.html" class="btn btn-outline">Scan Events</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to exploit</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section class="features section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>// CORE_MODULES</h2>
+                <p>What we offer – from zero to hero in cyber</p>
+            </div>
+            <div class="features-grid" id="featuresGrid">
+                <!-- Dynamically injected by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COUNTDOWN PROMO SECTION ========== -->
+    <section class="ctf-promo section-padding">
+        <div class="container">
+            <div class="ctf-promo-card">
+                <span class="ctf-badge">🔥 ACTIVE MISSION</span>
+                <h2 id="promoEventName">DeenSec CTF 2026</h2>
+                <p id="promoEventDesc">Intra-University Capture The Flag – solo format. Prove your skills.</p>
+                <div class="countdown-wrapper">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <a href="contact.html" id="promoEventLink" class="btn btn-register">Enlist Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS SECTION ========== -->
+    <section class="stats section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>// STATS.EXE</h2>
+                <p>Our impact in numbers</p>
+            </div>
+            <div class="stats-grid" id="statsGrid">
+                <!-- Dynamically injected -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACTIVITIES SECTION ========== -->
+    <section class="activities section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>// OPERATIONS</h2>
+                <p>What makes us unique</p>
+            </div>
+            <div class="activities-grid" id="activitiesGrid">
+                <!-- Dynamically injected -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER PLACEHOLDER ========== -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <!-- Load data.js first, then main script -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

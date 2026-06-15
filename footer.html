@@ -1,0 +1,61 @@
+<!-- ============================================
+     SHARED FOOTER – GUCC CYBER SECURITY SOCIETY
+     Social links are injected dynamically by script.js from data.js
+     Copyright year auto-updates via JavaScript
+     ============================================ -->
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-haltered"></i>
+                    <span>GUCC <span>Cyber Security Society.</span></span>
+                </div>
+                <p>Empowering the next generation of cyber defenders through hands‑on training, CTFs, and a thriving hacker community.</p>
+                <div class="social-links" id="footerSocialLinks">
+                    <!-- Social icons injected by script.js from data.js -->
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="committee.html">Committee</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Academy Link (Resources) -->
+            <div class="footer-links">
+                <h4>Academy Link</h4>
+                <ul>
+                    <li><a href="https://www.green.edu.bd/" target="_blank" rel="noopener noreferrer">Green University</a></li>
+                    <li><a href="https://cse.green.edu.bd/" target="_blank" rel="noopener noreferrer">CSE Department</a></li>
+                    <li><a href="https://gucc.green.edu.bd/" target="_blank" rel="noopener noreferrer">GUCC Official</a></li>
+                    <li><a href="#">CTF Archive</a></li>
+                </ul>
+            </div>
+            
+            <!-- Empty column for balanced grid (optional) -->
+            <div class="footer-links">
+                <h4>&nbsp;</h4>
+                <!-- Intentionally left blank for spacing -->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> GUCC Cyber Security Society. All rights reserved. | <span class="blink">_</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Auto-update copyright year
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+</script>

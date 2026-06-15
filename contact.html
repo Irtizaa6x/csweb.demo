@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Contact GUCC Cyber Security Society – get in touch for inquiries, collaborations, membership, or event hosting.">
+    <meta name="keywords" content="contact GUCC, cybersecurity club email, reach us, Green University">
+    <meta name="author" content="GUCC Cyber Security Society">
+    <meta name="theme-color" content="#0b0b0f">
+    <title>GUCC Cyber Security | Contact</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="contact">
+
+    <!-- ========== SHARED NAVBAR ========== -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- ========== PAGE HEADER ========== -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="header-decor left">
+                    <span class="bracket">&lt;</span><span class="tag">contact</span><span class="bracket">&gt;</span>
+                </div>
+                <h1 id="page-title" class="glitch" data-text="Contact Us">
+                    <span class="glitch-layer" aria-hidden="true">Contact Us</span>
+                    <span class="glitch-layer" aria-hidden="true">Contact Us</span>
+                    <span class="glitch-layer" aria-hidden="true">Contact Us</span>
+                    Contact Us
+                </h1>
+                <div class="title-underline"></div>
+                <p id="page-subtitle" class="page-subtitle">Start the conversation — we're here to help and collaborate</p>
+                <div class="header-decor right">
+                    <span class="bracket">&lt;/</span><span class="tag">contact</span><span class="bracket">&gt;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT GRID (INFO + FORM) ========== -->
+    <section class="contact section-padding">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Left side: Dynamic contact cards and social links -->
+                <div class="contact-info" id="contactInfo">
+                    <div class="loading-spinner"><i class="fas fa-spinner fa-pulse"></i> Loading contact info...</div>
+                </div>
+                
+                <!-- Right side: Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>$> username</label>
+                            <input type="text" id="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>$> email</label>
+                            <input type="email" id="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>$> subject</label>
+                            <input type="text" id="subject" placeholder="Inquiry topic">
+                        </div>
+                        <div class="form-group">
+                            <label>$> message</label>
+                            <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div id="formSuccess" class="form-success">
+                        <i class="fas fa-check-circle"></i> Message transmitted successfully. We'll reply within 24-48 hours.
+                    </div>
+                    <p class="form-note">[ encrypted channel ] All messages are secured.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION (DYNAMIC) ========== -->
+    <section class="faq-padding section-padding" style="background: var(--dark);">
+        <div class="container">
+            <div class="section-header">
+                <h2>// FREQUENTLY_ASKED</h2>
+                <p>Quick answers to common inquiries</p>
+            </div>
+            <div class="faq-grid" id="faqGrid">
+                <div class="loading-spinner"><i class="fas fa-spinner fa-pulse"></i> Loading FAQ...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GOOGLE MAP SECTION ========== -->
+    <div class="map-section section-padding">
+        <div class="container">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.123456789012!2d90.5663123!3d23.8295015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755cb0a4c65ef27%3A0xf54f56affbffdc99!2sGreen%20University%20of%20Bangladesh!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0; filter: grayscale(20%);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    title="Green University Campus Map">
+                </iframe>
+                <div class="map-address">
+                    <p><i class="fas fa-map-marker-alt"></i> Green University of Bangladesh, Purbachal American City, Dhaka - 1229</p>
+                    <a href="https://www.google.com/maps/place/Green+University+of+Bangladesh/@23.8295015,90.5663123,17z/" target="_blank" rel="noopener noreferrer">Open in Google Maps <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SHARED FOOTER ========== -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
